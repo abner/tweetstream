@@ -11,6 +11,7 @@ module TweetStream
       :user_agent,
       :auth_method,
       :proxy,
+      :skip_tls_on_proxy,
       :consumer_key,
       :consumer_secret,
       :oauth_token,
@@ -52,6 +53,8 @@ module TweetStream
     # By default, don't set a user oauth secret
     DEFAULT_OAUTH_TOKEN_SECRET = nil
 
+    DEFAULT_SKIP_TLS_ON_PROXY = nil
+
     # @private
     attr_accessor(*VALID_OPTIONS_KEYS)
 
@@ -86,6 +89,7 @@ module TweetStream
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
+      self.skip_tls_on_proxy = DEFAULT_SKIP_TLS_ON_PROXY
       self
     end
   end
