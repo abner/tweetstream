@@ -574,7 +574,8 @@ module TweetStream
         :user_agent => user_agent,
         :on_inited  => inited_proc,
         :params     => normalize_filter_parameters(options),
-        :proxy      => proxy
+        :proxy      => proxy,
+        :skip_tls_on_proxy => skip_tls_on_proxy
       }.merge(extra_stream_parameters).merge(auth_params)
 
       [stream_params, callbacks]

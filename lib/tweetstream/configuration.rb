@@ -11,6 +11,7 @@ module TweetStream
       :user_agent,
       :auth_method,
       :proxy,
+      :skip_tls_on_proxy,
       :consumer_key,
       :consumer_secret,
       :oauth_token,
