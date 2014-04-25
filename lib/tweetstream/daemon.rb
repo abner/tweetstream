@@ -29,25 +29,23 @@ require 'daemons'
 # matching your search term ('intridea' in this case)
 # is posted.
 #
-module TweetStream
-  class Daemon < TweetStream::Client
-    DEFAULT_NAME = 'tweetstream'.freeze
-    DEFAULT_OPTIONS = {:multiple => true}
+class TweetStream::Daemon < TweetStream::Client
+  DEFAULT_NAME = 'tweetstream'.freeze
+  DEFAULT_OPTIONS = {:multiple => true}
 
-    attr_accessor :app_name, :daemon_options
+  attr_accessor :app_name, :daemon_options
 
-    # The daemon has an optional process name for use when querying
-    # running processes.  You can also pass daemon options.
-    def initialize(name = DEFAULT_NAME, options = DEFAULT_OPTIONS)
-      @app_name = name
-      @daemon_options = options
-      super({})
-    end
+  # The daemon has an optional process name for use when querying
+  # running processes.  You can also pass daemon options.
+  def initialize(name = DEFAULT_NAME, options = DEFAULT_OPTIONS)
+    @app_name = name
+    @daemon_options = options
+    super({})
+  end
 
-    def start(path, query_parameters = {}, &block) #:nodoc:
-      Daemons.run_proc(@app_name, @daemon_options) do
-        super(path, query_parameters, &block)
-      end
+  def start(path, query_parameters = {}, &block) #:nodoc:
+    Daemons.run_proc(@app_name, @daemon_options) do
+      super(path, query_parameters, &block)
     end
   end
 end
